@@ -8,6 +8,24 @@ namespace Account_Type
 {
     public class Program
     {
+        public class Loan
+        {
+            public string Type { get; set; }
+            public double RateOfInt { get; set; }
+        }
+        public class Customer
+        {
+            public string Name { get; set; }
+            public int Id { get; set; }
+            public List<Loan> Loans = new List<Loan>();
+        }
+        public class AccountType
+        {
+            public string Type { get; set; }
+            public List<Customer> custList = new List<Customer>();
+        }
+
+
         static void Main(string[] args)
         {
             List<AccountType> accountList = new List<AccountType>()
@@ -131,10 +149,12 @@ namespace Account_Type
                 Console.WriteLine(a.Type);
                 foreach(Customer c in a.custList)
                 {
-                    Console.WriteLine("\t"+c.Name+" "+c.Id+" ");
+                    Console.WriteLine($"\t name={c.Name}-> id={c.Id}");
+                   // Console.WriteLine("\t"+c.Name+" "+c.Id+" ");
                     foreach (Loan l in c.Loans)
                     {
-                        Console.WriteLine("  \t" + l.Type + " " + l.RateOfInt + " ");
+                        // Console.WriteLine("  \t" + l.Type + " " + l.RateOfInt + " ");
+                        Console.WriteLine($"\t TypeOfLoan= {l.Type}-> RateOfLoan ={l.RateOfInt}");
                     }
 
                 }
@@ -146,20 +166,4 @@ namespace Account_Type
 
         
     
-    public class Loan
-{
-    public string Type { get; set; }
-    public double RateOfInt { get; set; }
-}
-public class Customer
-{
-    public string Name { get; set; }
-    public int Id { get; set; }
-    public List<Loan> Loans = new List<Loan>();
-}
-public class AccountType
-{
-    public string Type { get; set; }
-    public List<Customer> custList = new List<Customer>();
-}
 
